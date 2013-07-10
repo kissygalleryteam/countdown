@@ -1,0 +1,150 @@
+<!doctype html>
+<meta charset="utf-8"/>
+<title>Countdown</title>
+<script src="http://a.tbcdn.cn/s/kissy/1.3.0/kissy-min.js" charset="utf-8"></script>
+
+<h3>demo: </h3>
+<pre class="s-section">
+    作者： 基德 &lt;jide@taobao.com&gt;
+    版本： 1.3.0
+    描述： 倒计时
+    源码： <a href="../countdown.js">countdown.js</a>
+</pre>
+
+<div id="demo1">
+    <p>1 默认，服务端输出leftTime，把客户端时间干扰降到最低。单位秒，可以接受小数，精准度0.1s</p>
+    <div class="cd cd-lite" data-config="{'leftTime':1121685}">剩余时间：${d}天${h}时${m}分</div>
+    <div class="cd cd-medium" data-config="{'leftTime':1121685}">剩余时间：${h}时${m}分${s}秒</div>
+    <div class="cd cd-large" data-config="{'leftTime':1121685.3}">剩余时间：<span class="clock">${h}时${m}分${s-ext}秒</span></div>
+</div>
+<div id="demo2">
+    <p>2 滑动效果</p>
+    <div class="cd cd-lite cd-slide" data-config="{'leftTime':1121685.1,'effect':'slide'}">剩余时间：${h}时${m}分${s}秒</div>
+    <div class="cd cd-medium cd-slide" data-config="{'leftTime':1121685.2,'effect':'slide'}">剩余时间：${h}时${m}分${s}秒</div>
+    <div class="cd cd-large cd-slide" data-config="{'leftTime':1121685.3,'effect':'slide'}">剩余时间：<span class="clock">${h}时${m}分${s}秒</span></div>
+</div>
+<div id="demo3">
+    <p>3 不太完美的翻牌效果</p>
+    <div class="cd cd-large cd-flip" data-config="{'leftTime':1121685,'effect':'flip'}">剩余时间：<span class="clock">${h}时${m}分${s}秒</span></div>
+</div>
+<pre class="demo">
+    HTML:
+        &lt;div class="cd cd-large cd-flip" data-config="{'leftTime':1121685,'effetc':'flip'}"&gt;剩余时间：&lt;span class="clock"&gt;${h}时${m}分${s}秒&lt;/span&gt;&lt;/div&gt;
+
+    JavaScript:
+        KISSY.use("gallery/countdown/1.3/index",function(S, Countdown){
+            S.all('#demo1 .cd, #demo2 .cd, #demo3 .cd').each(function(node) {
+                Countdown({
+                    el: node
+                });
+            });
+        });
+</pre>
+<div id="demo4">
+    <p>4 notify：cd.notify(xx, fn); 当倒计时还剩xx秒时调用fn，精准度为 1s（可以输入0.1s精度，因浏览器原因不保证一定触发，Countdown本身会弃帧保时，总体是保证精确的）</p>
+    <div class="cd cd-large cd-slide" data-config="{'leftTime':4,'effetc':'slide'}">剩余时间：<span class="clock">${h}时${m}分${s}秒</span></div>
+</div>
+<pre class="demo">
+    HTML:
+        &lt;div class="cd cd-large cd-slide" data-config="{'leftTime':4,'effetc':'slide'}"&gt;剩余时间：&lt;span class="clock"&gt;${h}时${m}分${s}秒&lt;/span&gt;&lt;/div&gt;
+
+    JavaScript:
+        KISSY.use("gallery/countdown/1.3/index",function(S, Countdown){
+            var cd = Countdown({
+                el: '#demo4 .cd'
+            });
+            cd.notify(0, function() {
+                this.left = 3000;
+            });
+        });
+</pre>
+<div id="demo5">
+    <p>5 大于24小时配置</p>
+    <div class="cd cd-large cd-slide" data-config="{'leftTime':359999.9,'effetc':'slide'}">剩余时间：<span class="clock">${h}时${m}分${s}秒</span></div>
+</div>
+<pre class="demo">
+    HTML:
+        &lt;div class="cd cd-large cd-slide" data-config="{'leftTime':359999.9,'effetc':'slide'}"&gt;剩余时间：&lt;span class="clock"&gt;${h}时${m}分${s}秒&lt;/span&gt;&lt;/div&gt;
+
+    JavaScript:
+        KISSY.use("gallery/countdown/1.3/index",function(S, Countdown){
+            Countdown({
+                el: '#demo5 .cd',
+                clock: ['d', 100, 2, 'h', 100, 2, 'm', 60, 2, 's', 60, 2, 'u', 10, 1]
+            });
+        });
+</pre>
+<div id="demo6">
+    <p>6 使用本地时间（注意：stopPoint为UNIX时间戳，故单位是毫秒） & 使用js配置，不依赖DOM上的data-config</p>
+    <div class="cd cd-large cd-slide" data-config="{'stopPoint':4529059200000,'effetc':'slide'}">剩余时间：<span class="clock">${d}天${h}时${m}分${s}秒</span></div>
+</div>
+<pre class="demo">
+    HTML:
+        &lt;div class="cd cd-large cd-slide"&gt;剩余时间：&lt;span class="clock"&gt;${d}天${h}时${m}分${s}秒&lt;/span&gt;&lt;/div&gt;
+
+    JavaScript:
+        KISSY.use("gallery/countdown/1.3/index",function(S, Countdown){
+            Countdown({
+                el: '#demo6 .cd',
+                stopPoint: 4529059200000,
+                effetc: 'slide'
+            });
+        });
+</pre>
+<div id="demo7">
+    <p>7 自定义模板</p>
+    <div class="cd cd-large cd-slide" data-config="{'leftTime':1121685,'effetc':'slide'}">剩余时间：<span class="clock">$(h)时$(m)分$(s)秒</span></div>
+</div>
+<pre class="demo">
+    HTML:
+        &lt;div class="cd cd-large cd-slide"&gt;剩余时间：&lt;span class="clock"&gt;$(h)时$(m)分$(s)秒&lt;/span&gt;&lt;/div&gt;
+
+    JavaScript:
+        KISSY.use("gallery/countdown/1.3/index",function(S, Countdown){
+            Countdown({
+                el: '#demo7 .cd',
+                leftTime: 1121685,
+                varRegular: /\$\(([\-\w]+)\)/g
+            });
+        });
+</pre>
+<script>
+    KISSY.config({
+        packages:[
+            {
+                name: "gallery",
+                path: "../../../",
+                debug: true,
+                ignorePackageNameInUri: true
+            }
+        ]
+    });
+
+    KISSY.use('gallery/countdown/1.3/', function (S, Countdown) {
+        S.all('#demo1 .cd, #demo2 .cd, #demo3 .cd, #demo6 .cd').each(function(node) {
+            Countdown({
+                el: node
+            });
+        });
+        S.all('#demo4 .cd').each(function(node) {
+            var cd = Countdown({
+                el: node
+            });
+            cd.notify(0, function() {
+                this.left = 3000;
+            });
+        });
+        S.all('#demo5 .cd').each(function(node) {
+            Countdown({
+                el: node,
+                clock: ['d', 100, 2, 'h', 100, 2, 'm', 60, 2, 's', 60, 2, 'u', 10, 1]
+            });
+        });
+        S.all('#demo7 .cd').each(function(node) {
+            Countdown({
+                el: node,
+                varRegular: /\$\(([\-\w]+)\)/g
+            });
+        });
+    })
+</script>
