@@ -29,10 +29,6 @@ module.exports = function(grunt) {
                     {
                         src: "<%= pkg.version %>/index.js",
                         dest: "<%= pkg.version %>/build/index.js"
-                    },
-                    {
-                        src: "<%= pkg.version %>/index.css",
-                        dest: "<%= pkg.version %>/build/index.css"
                     }
                 ]
             }
@@ -48,15 +44,40 @@ module.exports = function(grunt) {
             },
             base: {
                 files: {
-                    '<%= pkg.version %>/build/index-min.js': ['<%= pkg.version %>/build/index.js'],
-                    '<%= pkg.version %>/build/index-min.css': ['<%= pkg.version %>/build/index.css']
+                    '<%= pkg.version %>/build/index-min.js': ['<%= pkg.version %>/build/index.js']
                 }
+            }
+        },
+        copy: {
+            options:{
+                banner:'<%= banner %>'
+            },
+            main:{
+                files:[
+                    {
+                        expand:true,
+                        cwd:'<%= pkg.version %>/',
+                        src:['*.css'],
+                        dest:'<%= pkg.version %>/build/'
+                    }
+                ]
+            }
+        },
+        cssmin:{
+            minify:{
+                expand:true,
+                cwd:'<%= pkg.version %>/build/',
+                src:['*.css', '!*-min.css'],
+                dest:'<%= pkg.version %>/build/',
+                ext:'-min.css'
             }
         }
     });
 
     // 使用到的任务，可以增加其他任务
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-kmc');
-    return grunt.registerTask('default', ['kmc', 'uglify']);
+    return grunt.registerTask('default', ['kmc', 'uglify', 'copy', 'cssmin']);
 };
