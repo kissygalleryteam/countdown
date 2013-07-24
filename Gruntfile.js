@@ -47,11 +47,37 @@ module.exports = function(grunt) {
                     '<%= pkg.version %>/build/index-min.js': ['<%= pkg.version %>/build/index.js']
                 }
             }
+        },
+        copy: {
+            options:{
+                banner:'<%= banner %>'
+            },
+            main:{
+                files:[
+                    {
+                        expand:true,
+                        cwd:'<%= pkg.version %>/',
+                        src:['*.css'],
+                        dest:'<%= pkg.version %>/build/'
+                    }
+                ]
+            }
+        },
+        cssmin:{
+            minify:{
+                expand:true,
+                cwd:'<%= pkg.version %>/build/',
+                src:['*.css', '!*-min.css'],
+                dest:'<%= pkg.version %>/build/',
+                ext:'-min.css'
+            }
         }
     });
 
     // 使用到的任务，可以增加其他任务
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-kmc');
-    return grunt.registerTask('default', ['kmc', 'uglify']);
+    return grunt.registerTask('default', ['kmc', 'uglify', 'copy', 'cssmin']);
 };
