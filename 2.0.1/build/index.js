@@ -1,9 +1,9 @@
 /*
 combined files : 
 
-kg/countdown/2.0.1/timer
-kg/countdown/2.0.1/effect
-kg/countdown/2.0.1/index
+kg/countdown/2.0.0/timer
+kg/countdown/2.0.0/effect
+kg/countdown/2.0.0/index
 
 */
 /**
@@ -25,7 +25,7 @@ kg/countdown/2.0.1/index
  * [*] 2011-01-13
  *     改为使用本地时间计时，避免额外(setInterval等导致的)误差的累计
  */
-KISSY.add('kg/countdown/2.0.1/timer',function (S) {
+KISSY.add('kg/countdown/2.0.0/timer',function (S) {
         // fns 中的元素都是二元组，依次为：
         //   frame {function}   帧函数
         //   frequency {number} 二进制末位——1代表帧频率是1000次/s，0代表帧频率是100次/s
@@ -114,7 +114,7 @@ KISSY.add('kg/countdown/2.0.1/timer',function (S) {
  */
 /*global KISSY */
 
-KISSY.add('kg/countdown/2.0.1/effect',function (S) {
+KISSY.add('kg/countdown/2.0.0/effect',function (S) {
     /**
      * Static attributes
      */
@@ -303,7 +303,7 @@ KISSY.add('kg/countdown/2.0.1/effect',function (S) {
  * [+]new feature  [*]improvement  [!]change  [x]bug fix
  *
  * [*] 2013-07-10
- *     bump version to 1.3
+ *     bump version to 2.0.0
  * [*] 2012-04-26
  *     移除watchman，以及与真实时间有关的逻辑。修正notify无效的bug
  * [x] 2011-04-18 16:35
@@ -311,7 +311,7 @@ KISSY.add('kg/countdown/2.0.1/effect',function (S) {
  *     {{{ value = value < 0 ? 0 : value; }}}
  */
 
-KISSY.add('kg/countdown/2.0.1/index',function (S, Node, Base, JSON, Timer, Effect) {
+KISSY.add('kg/countdown/2.0.0/index',function (S, Node, Base, JSON, Timer, Effect) {
     var EVENT_AFTER_PAINT = 'afterPaint';
 
     /**

@@ -1,7 +1,7 @@
 <!doctype html>
 <meta charset="utf-8"/>
 <title>Countdown</title>
-<script src="http://g.tbcdn.cn/kissy/k/1.4.0/seed-min.js" charset="utf-8"></script>
+<script src="http://a.tbcdn.cn/s/kissy/1.3.0/kissy.js" charset="utf-8"></script>
 <script>
     var S = KISSY;
     S.config({
@@ -10,12 +10,12 @@
         }]});
     if (S.Config.debug){
         var srcPath = "../";
-        S.config({packages:[{name:"kg/countdown/2.0.1",path:srcPath,charset:"utf-8",ignorePackageNameInUri:true}]});}</script>
+        S.config({packages:[{name:"kg/countdown/2.0.0",path:srcPath,charset:"utf-8",ignorePackageNameInUri:true}]});}</script>
 
 <h3>demo: </h3>
 <pre class="s-section">
     作者： 基德 &lt;jide@taobao.com&gt;
-    版本： 2.0.1
+    版本： 2.0.0
     描述： 倒计时
     源码： <a href="../countdown.js">countdown.js</a>
 </pre>
@@ -41,7 +41,7 @@
         &lt;div class="cd cd-large cd-flip" data-config="{'leftTime':1121685,'effetc':'flip'}"&gt;剩余时间：&lt;span class="clock"&gt;${h}时${m}分${s}秒&lt;/span&gt;&lt;/div&gt;
 
     JavaScript:
-        KISSY.use("kg/countdown/2.0.1/index",function(S, Countdown){
+        KISSY.use("kg/countdown/2.0.0/index",function(S, Countdown){
             S.all('#demo1 .cd, #demo2 .cd, #demo3 .cd').each(function(node) {
                 Countdown({
                     el: node
@@ -58,7 +58,7 @@
         &lt;div class="cd cd-large cd-slide" data-config="{'leftTime':4,'effetc':'slide'}"&gt;剩余时间：&lt;span class="clock"&gt;${h}时${m}分${s}秒&lt;/span&gt;&lt;/div&gt;
 
     JavaScript:
-        KISSY.use("kg/countdown/2.0.1/index",function(S, Countdown){
+        KISSY.use("kg/countdown/2.0.0/index",function(S, Countdown){
             var cd = Countdown({
                 el: '#demo4 .cd'
             });
@@ -76,7 +76,7 @@
         &lt;div class="cd cd-large cd-slide" data-config="{'leftTime':359999.9,'effetc':'slide'}"&gt;剩余时间：&lt;span class="clock"&gt;${h}时${m}分${s}秒&lt;/span&gt;&lt;/div&gt;
 
     JavaScript:
-        KISSY.use("kg/countdown/2.0.1/index",function(S, Countdown){
+        KISSY.use("kg/countdown/2.0.0/index",function(S, Countdown){
             Countdown({
                 el: '#demo5 .cd',
                 clock: ['d', 100, 2, 'h', 100, 2, 'm', 60, 2, 's', 60, 2, 'u', 10, 1]
@@ -92,7 +92,7 @@
         &lt;div class="cd cd-large cd-slide"&gt;剩余时间：&lt;span class="clock"&gt;${d}天${h}时${m}分${s}秒&lt;/span&gt;&lt;/div&gt;
 
     JavaScript:
-        KISSY.use("kg/countdown/2.0.1/index",function(S, Countdown){
+        KISSY.use("kg/countdown/2.0.0/index",function(S, Countdown){
             Countdown({
                 el: '#demo6 .cd',
                 stopPoint: 4529059200000,
@@ -109,7 +109,7 @@
         &lt;div class="cd cd-large cd-slide"&gt;剩余时间：&lt;span class="clock"&gt;$(h)时$(m)分$(s)秒&lt;/span&gt;&lt;/div&gt;
 
     JavaScript:
-        KISSY.use("kg/countdown/2.0.1/index",function(S, Countdown){
+        KISSY.use("kg/countdown/2.0.0/index",function(S, Countdown){
             Countdown({
                 el: '#demo7 .cd',
                 leftTime: 1121685,
@@ -119,7 +119,7 @@
 </pre>
 <script>
 
-    KISSY.use('kg/countdown/2.0.1/', function (S, Countdown) {
+    KISSY.use('kg/countdown/2.0.0/', function (S, Countdown) {
         S.all('#demo1 .cd, #demo2 .cd, #demo3 .cd, #demo6 .cd').each(function(node) {
             Countdown({
                 el: node
