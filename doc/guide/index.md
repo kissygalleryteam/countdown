@@ -5,7 +5,7 @@ Countdown 是一个简洁易用的倒计时组件，计时精度、性能都不�
 
 ### 初始化组件
 
-    S.use('kg/countdown/2.0.0/index', function (S, Countdown) {
+    S.use('kg/countdown/2.0.1/index', function (S, Countdown) {
         var countdown = new Countdown({
             el: '.countdown'
         });
