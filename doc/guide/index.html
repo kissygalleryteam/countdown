@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>countdown</title>
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com-prettify.css">
+    <link rel="stylesheet" href="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com.css">
+    <script src="http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://cdn.staticfile.org/prettify/r298/prettify.min.js"></script>
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.8/seed-min.js" data-config="{combine:true}"></script>
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div id="header"><a href="http://docs.kissyui.com/" class="logo">kissy</a>
+      <nav><a href="http://docs.kissyui.com/1.4/docs/html/coms.html">优秀组件推荐</a></nav>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul data-spy="affix" data-offset-top="0" class="nav nav-list bs-docs-sidenav"></ul>
+        </div>
+        <div class="span9 bs-docs-content">
+          <h1 data-id="undefined" class="title">countdown</h1>
+          <p class="author-wrapper"><span>组件有问题？旺旺联系作者：</span><a href="https://github.com/xthsky" target="_blank" data-name="基德" class="author"><img src="https://avatars.githubusercontent.com/u/340308?v=2&amp;s=60" alt="基德"></a><span class="author-name">基德</span>
+          </p>
+          <div class="common-link"><a href="../demo/index.html" target="_blank" class="demo">示例</a><a href="https://github.com/kissygalleryteam/countdown" target="_blank" class="source">源码</a></div>
+          <p class="com-info"><span class="info-label">View</span><span data-com="countdown" class="J_View">1300</span></p>
+          <p class="com-info"><span class="info-label">所属分类</span><a href="http://kpm.taobao.net/list/时间">时间</a><span class="info-label tag-label">组件标签</span><a href="http://kpm.taobao.net/list/tag?tag="></a>
+          </p>
+          <p class="com-info"><span class="info-label">kissy版本</span><span>1.4.X</span>
+          </p><h2 id="-">综述</h2>
+<p>Countdown 是一个简洁易用的倒计时组件，计时精度、性能都不差。</p>
+<h2 id="-">快速使用</h2>
+<h3 id="-">初始化组件</h3>
+<pre><code>S.use(&#39;kg/countdown/2.0.1/index&#39;, function (S, Countdown) {
+    var countdown = new Countdown({
+        el: &#39;.countdown&#39;
+    });
+})
+</code></pre><h2 id="api-">API说明</h2>
+<p>关键配置说明
+el: Countdown节点
+template: 可以忽略，默认使用el.innerHTML
+leftTime: 剩余时间，从服务端输出可以保障准确性
+effect: 有 normal, slide, flip 可选</p>
+<p>其它配置选项
+stopPoint: 也可以输出一个结束的时间戳，此时根据客户端时间计算剩余时间（此时不能输出leftTime，否则使用leftTime）
+varRegular: 模板变量正则，有些时候比如不方便使用 ${name} 可以仔细修改，参考本地时间demo
+clock: 时钟控制数组，特殊需求时可以修改，里面是三元组：指针名、进制、位数，可参考大于99小时demo</p>
+<p>方法
+notify(time, callback) 在第xx秒时调用 callback 函数，time单位为s（也可以使用0.1s，不过此时因浏览器的计时器原因不保证100%触发）</p>
+
+          <div style="display:none;"><script type="text/javascript" src="http://tajs.qq.com/stats?sId=36378479" charset="UTF-8"></script></div>
+          <script src="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com.js"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
